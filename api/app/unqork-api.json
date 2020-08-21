@@ -1,0 +1,446 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Unquork Assignment - Tushar",
+        "version": "1.0",
+        "description": "unquork backend engineer assignment,for more deatils please contact me.",
+        "contact": {
+            "email": "tusharbudhe32186@gmail.com"
+        }
+    },
+    "host": "localhost:4500",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/foos/foo": {
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "foo",
+                    "schema": {
+                        "$ref": "#/definitions/foorequestpostdefault"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Create new foo",
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/foodefaultresponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request. Id not in correct format.",
+                        "schema": {
+                            "$ref": "#/definitions/responsebadrequest"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/responseerror"
+                        }
+                    }
+                }
+            }
+        },
+        "/foos/foo/:{id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "format": "uuid",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name": "foo",
+                    "schema": {
+                        "$ref": "#/definitions/foorequestpostdefault"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Update foo",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/foodefaultresponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request. Id not in correct format.",
+                        "schema": {
+                            "$ref": "#/definitions/responsebadrequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found!",
+                        "schema": {
+                            "$ref": "#/definitions/responsenotfound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/responseerror"
+                        }
+                    }
+                }
+            }
+        },
+        "/foos": {
+            "get": {
+                "description": "get all foos",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/foosdefault"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found!",
+                        "schema": {
+                            "$ref": "#/definitions/responsenotfound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/responseerror"
+                        }
+                    }
+                }
+            }
+        },
+        "/foos/foo/:id": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "format": "uuid",
+                    "required": true,
+                    "description": "25a5a1e0-e0d1-11ea-be18-a399058f1e99"
+                }
+            ],
+            "get": {
+                "description": "get foo by id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/foodefaultresponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request. Id not in correct format.",
+                        "schema": {
+                            "$ref": "#/definitions/responsebadrequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found!",
+                        "schema": {
+                            "$ref": "#/definitions/responsenotfound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/responseerror"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/foodefaultresponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request. Id not in correct format.",
+                        "schema": {
+                            "$ref": "#/definitions/responsebadrequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found!",
+                        "schema": {
+                            "$ref": "#/definitions/responsenotfound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/responseerror"
+                        }
+                    }
+                }
+            }
+        },
+        "/bar": {
+            "post": {
+                "description": "Bad Endpoints POST - /bar",
+                "responses": {
+                    "404": {
+                        "description": "Bad Endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/responsenotfound"
+                        }
+                    }
+                }
+            }
+        },
+        "/err": {
+            "get": {
+                "description": "Bad request - /err",
+                "responses": {
+                    "500": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/responseerror"
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "description": "GET - /",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/responsedefault"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "foosdefault": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "enum": [
+                        200,
+                        404
+                    ],
+                    "default": 200
+                },
+                "error": {
+                    "type": "object",
+                    "default": null
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/foodefault"
+                    }
+                }
+            }
+        },
+        "foodefaultresponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "enum": [
+                        200,
+                        201
+                    ],
+                    "default": 200
+                },
+                "error": {
+                    "type": "object",
+                    "default": null
+                },
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/foodefault"
+                }
+            }
+        },
+        "fooids": {
+            "type": "string",
+            "format": "uuid",
+            "example": "25a5a1e0-e0d1-11ea-be18-a399058f1e99"
+        },
+        "foorequestpostdefault": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "default": null
+                },
+                "foos": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/fooids"
+                    }
+                }
+            }
+        },
+        "foorequestputdefault": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "25a5a1e0-e0d1-11ea-be18-a399058f1e99"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "default": null
+                },
+                "foos": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/fooids"
+                    }
+                }
+            }
+        },
+        "foodefault": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "25a5a1e0-e0d1-11ea-be18-a399058f1e99"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "modified": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "data": {
+                    "type": "object",
+                    "default": null
+                },
+                "foos": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/fooids"
+                    }
+                }
+            }
+        },
+        "responsedefault": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "enum": [
+                        200,
+                        404
+                    ],
+                    "default": 200
+                },
+                "error": {
+                    "type": "object",
+                    "default": null
+                },
+                "data": {
+                    "type": "string",
+                    "default": "OK"
+                }
+            }
+        },
+        "responseerror": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "enum": [
+                        200,
+                        404,
+                        500
+                    ],
+                    "default": 500
+                },
+                "error": {
+                    "type": "string",
+                    "default": "DOH!"
+                },
+                "data": {
+                    "type": "object",
+                    "default": null
+                }
+            }
+        },
+        "responsenotfound": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "enum": [
+                        200,
+                        404,
+                        500
+                    ],
+                    "default": 404
+                },
+                "error": {
+                    "type": "string",
+                    "default": "Not Found!"
+                },
+                "data": {
+                    "type": "object",
+                    "default": null
+                }
+            }
+        },
+        "responsebadrequest": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "enum": [
+                        200,
+                        404,
+                        500,
+                        400
+                    ],
+                    "default": 400
+                },
+                "error": {
+                    "type": "string",
+                    "default": "Bad Request"
+                },
+                "data": {
+                    "type": "object",
+                    "default": null
+                }
+            }
+        }
+    }
+}
