@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 // const YAML = require('yamljs');
 
-const swaggerDocument = require('./unqork-api.json');
+const swaggerDocument = require('./core-api.json');
 const requestId = require('./middleware/requestId');
 const routers = require('./routers');
 
